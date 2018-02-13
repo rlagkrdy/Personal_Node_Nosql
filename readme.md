@@ -1,1 +1,0 @@
-이 프로젝트는 개인적으로 Typescript+Node+Webpack+Jasmine 기본세팅을 한 프로젝트 입니다.
