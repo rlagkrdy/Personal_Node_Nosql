@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as mocha from 'mocha';
 import * as should from 'should';
 import * as request from 'supertest';
+
 import { Response } from 'supertest';
 
 import App from '../src/App';
@@ -9,7 +10,7 @@ import App from '../src/App';
 const app: express.Application = new App().app;
 
 describe('/ Route should', () => {
-    it('return status 200', done => {
+    it('/user is return array', done => {
         request(app)
             .get('/user')
             .expect(200)
@@ -18,4 +19,5 @@ describe('/ Route should', () => {
                 done();
             });
     });
+    it('/user if have limit array length should be limit', done => {});
 });
