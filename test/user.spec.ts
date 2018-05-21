@@ -2,9 +2,7 @@ import * as express from 'express';
 import * as mocha from 'mocha';
 import * as should from 'should';
 import * as request from 'supertest';
-
 import { Response } from 'supertest';
-
 import App from '../src/App';
 
 const app: express.Application = new App().app;
@@ -59,7 +57,7 @@ describe('/user/1 should', () => {
         it('id로 유저를 찾을 수 없을 경우 404로 응답한다.', (done: MochaDone) => {
             request(app)
                 .get('/user/5')
-                .expect(404)
+                .expect(400)
                 .end(done);
         });
     });

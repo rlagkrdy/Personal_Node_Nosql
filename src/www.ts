@@ -7,6 +7,5 @@ const app: express.Application = new App().app;
 app
     .listen(port, () => {
         console.log(`Express server listening at ${port}`);
-        console.log('진입???');
     })
     .on('error', err => console.error(err));
