@@ -1,11 +1,12 @@
 import * as express from 'express';
 import { Application, Request, Response, NextFunction, Router } from 'express';
 import * as bodyParser from 'body-parser';
-import * as Promise from 'promise';
+import * as promise from 'promise';
 import * as morgan from 'morgan';
 import HakyoMail from './utils/mail/Mail';
 import { CtrlModule } from './ctrl.module';
-import { con } from './mysql/mysql';
+import { transaction } from './mysql/mysql';
+import { sqlHandle, errorHandle } from './mysql/sqlHandle';
 
 export default class App {
     public app: Application;
@@ -23,15 +24,7 @@ export default class App {
         this.CrlModule = new CtrlModule(this.app);
 
         this.app.get('/', (req: Request, res: Response, next: NextFunction) => {
-            const sql: string = 'select * from Y_USR';
-            con
-                .then((con: any) => {
-                    return con.query(sql, '');
-                })
-                .then((rows: any) => {
-                    console.log('primise mysql', rows);
-                });
-            res.send('Hello world22222222');
+            res.send('hello');
         });
 
         this.app.get('/sendMail', (req, res, next) => {
@@ -41,7 +34,11 @@ export default class App {
         });
     }
 
-    setHeader(req: express.Request, res: express.Response, next: express.NextFunction): void {
+    setHeader(
+        req: express.Request,
+        res: express.Response,
+        next: express.NextFunction
+    ): void {
         res.header('X-Frame-Options', 'SAMEORIGIN');
         res.header('Access-Control-Allow-Credentials', 'true');
         res.header('Access-Control-Allow-Origin', '*');
