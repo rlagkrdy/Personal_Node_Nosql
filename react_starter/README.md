@@ -1,9 +1,9 @@
-# Nodejs + Express Starter
+# React Typescript Starter
 
--   express
+-   React(dom, router, redux)
 -   Typescript
 -   Webpack
--   mocha(should, supertest)
+-   Jest
 -   Tslint
 
 ## Licensing
